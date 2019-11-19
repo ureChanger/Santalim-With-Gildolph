@@ -1,75 +1,116 @@
 import os
-# 모듈 불러오기
 import pygame
+from pygame.locals import *
 import math
-
-# 초기화 시키기
-pygame.init()
-width, height = 640, 480
-screen = pygame.display.set_mode((width, height))
-acc = [0, 0]
-
-# 이미지 가져오기
+from time import sleep
 
 os.chdir(os.path.dirname(os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))))
-player = pygame.image.load("drawable/run.png")
-print(os.getcwd())
+
+class Player:
+    x = 10
+    y = 300
+    speed = 7
+
+    # 플레이어가 점프중인지 아닌지 저장
+    isjump = 0
+
+    # 힘(v)와 질량(m)
+    v = 8
+    m = 2
+
+    def moveRight(self):
+        self.x = self.x + self.speed
+
+    def moveLeft(self):
+        self.x = self.x - self.speed
+
+    def jump(self):
+        self.isjump = 1
+
+    def update(self):
+        if self.isjump:
+            #힘을 계산한다( F = 0.5 * m * v*v )
+            if self.v > 0:
+                F = (0.5 * self.m * self.v * self.v + 8)
+            else:
+                F = -(0.5 * self.m *self.v * self.v *0.022)
+
+            #포지션을 바꾼다.
+            self.y = self.y - F
+
+            #가속을 바꾼다.
+            self.v = self.v - 1
+
+            #만약 바닥에 닿았을 경우, 가속을 리셋한다.
+            if self.y >= 300:
+                self.y = 300
+                self.isjump = 0
+                self.v = 8
+
+class App:
+    width, height = 640, 480
+    player = 0
+
+    def __init__(self):
+        self._running = True
+        self._display_surf = None
+        self._image_surf = None
+        self.player = Player()
+
+    #게임 시작 화면
+    def on_init(self):
+        pygame.init()
+        self._display_surf = pygame.display.set_mode((self.width, self.height))
+
+        pygame.display.set_caption("Time Keeper Game !")
+        self._running = True
+        self._image_surf = pygame.image.load("drawable/run.png").convert()
+
+    #Esc누르면 종료
+    def on_event(self, event):
+        if event.type == QUIT:
+            self._running = False
+
+    def on_loop(self):
+        pass
 
 
-keys = [False, False, False, False]
-playerpos = [30, 320]
+    def on_render(self):
+        self._display_surf.fill((0,0,0))
+        self._display_surf.blit(self._image_surf, (self.player.x, self.player.y))
+        self.player.update()
+        pygame.display.flip()
+        sleep(0.0159)
 
-# 화면이 계속 보이게 하기
-
-
-while True :
-    # 화면을 깨끗하게 하기
-    screen.fill((0,0,0))        # ( R,G,B )
-    pygame.display.set_caption("Time Keeper Game !")
-
-    # 플레이어 마우스 바라보게 만들기
-    position = pygame.mouse.get_pos()
-    angle = math.atan2(position[1] - (playerpos[1]+32), position[0] - (playerpos[0]+26))
-    playerrot = pygame.transform.rotate(player, 360 - angle * 57.29)
-    playerpos1 = (playerpos[0] - playerrot.get_rect().width//2, playerpos[1] - playerrot.get_rect().height//2)
-    screen.blit(playerrot, playerpos1)
+    #pygame 종료
+    def on_cleanup(self):
+        pygame.quit()
 
 
-    # 화면 다시 그리기
-    pygame.display.flip()
+    def on_execute(self):
+        if self.on_init() == False:
+            self._running = False
 
-    # 게임 종료하기
-    for event in pygame.event.get():
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_w:
-                keys[0] = True
-            elif event.key == pygame.K_a:
-                keys[1] = True
-            elif event.key == pygame.K_s:
-                keys[2] = True
-            elif event.key == pygame.K_d:
-                keys[3] = True
+        while(self._running):
+            pygame.event.pump()
+            keys = pygame.key.get_pressed()
 
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_w:
-                keys[0] = False
-            elif event.key == pygame.K_a:
-                keys[1] = False
-            elif event.key == pygame.K_s:
-                keys[2] = False
-            elif event.key == pygame.K_d:
-                keys[3] = False
+            if keys[K_RIGHT] :
+                self.player.moveRight()
 
-        # QUIT 은 X 이다. 이것을 누르면 이 창을 종료한다.
-        if event.type == pygame.QUIT :
-            pygame.quit()
-            exit(0)
-        # 플레이어 움직이기
-        if keys[0]:
-            playerpos[1] = playerpos[1] - 5
-        elif keys[2]:
-            playerpos[1] = playerpos[1] + 5
-        elif keys[1]:
-            playerpos[0] = playerpos[0] - 5
-        elif keys[3]:
-            playerpos[0] = playerpos[0] + 5
+            if keys[K_LEFT] :
+                self.player.moveLeft()
+
+            if keys[K_UP] :
+                self.player.jump()
+
+            if keys[K_ESCAPE] :
+                self._running = False
+
+            self.on_loop()
+            self.on_render()
+        self.on_cleanup()
+
+if __name__ == "__main__" :
+    theApp = App()
+    theApp.on_execute()
