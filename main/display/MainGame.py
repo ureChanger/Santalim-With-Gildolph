@@ -1,6 +1,10 @@
+import sys
+import os
 # 모듈 불러오기
 import pygame
 import math
+
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 # 초기화 시키기
 pygame.init()
@@ -10,7 +14,10 @@ acc = [0, 0]
 
 
 # 이미지 가져오기
+
+os.chdir(os.path.dirname(os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))))
 player = pygame.image.load("drawable/run.png")
+print(os.getcwd())
 
 
 keys = [False, False, False, False]
