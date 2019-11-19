@@ -1,17 +1,13 @@
-import sys
 import os
 # 모듈 불러오기
 import pygame
 import math
-
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 # 초기화 시키기
 pygame.init()
 width, height = 640, 480
 screen = pygame.display.set_mode((width, height))
 acc = [0, 0]
-
 
 # 이미지 가져오기
 
@@ -29,6 +25,7 @@ playerpos = [30, 320]
 while True :
     # 화면을 깨끗하게 하기
     screen.fill((0,0,0))        # ( R,G,B )
+    pygame.display.set_caption("Time Keeper Game !")
 
     # 플레이어 마우스 바라보게 만들기
     position = pygame.mouse.get_pos()
