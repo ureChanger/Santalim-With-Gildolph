@@ -1,7 +1,6 @@
 import os
 import pygame
 from pygame.locals import *
-import math
 from time import sleep
 
 os.chdir(os.path.dirname(os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))))
@@ -29,6 +28,9 @@ class Player:
 
     def update(self):
         if self.isjump:
+            print("y 좌표 : ",self.y)
+            print("v : ",self.v)
+
             #힘을 계산한다( F = 0.5 * m * v*v )
             if self.v > 0:
                 F = (0.5 * self.m * self.v * self.v + 8)
@@ -40,6 +42,7 @@ class Player:
 
             #가속을 바꾼다.
             self.v = self.v - 1
+            print("힘(F) : ",F)
 
             #만약 바닥에 닿았을 경우, 가속을 리셋한다.
             if self.y >= 300:
@@ -53,18 +56,22 @@ class App:
 
     def __init__(self):
         self._running = True
-        self._display_surf = None
-        self._image_surf = None
         self.player = Player()
 
     #게임 시작 화면
     def on_init(self):
         pygame.init()
-        self._display_surf = pygame.display.set_mode((self.width, self.height))
+        self.gameDisplay = pygame.display.set_mode((self.width, self.height))
 
         pygame.display.set_caption("Time Keeper Game !")
         self._running = True
-        self._image_surf = pygame.image.load("drawable/run.png").convert()
+
+        background = pygame.image.load('drawable/mainGameBackground.gif')
+        self.playerIng = pygame.image.load('drawable/run.png').convert()
+
+        self.gameDisplay.blit(background, (0,0))
+
+        pygame.display.update()
 
     #Esc누르면 종료
     def on_event(self, event):
@@ -76,8 +83,7 @@ class App:
 
 
     def on_render(self):
-        self._display_surf.fill((0,0,0))
-        self._display_surf.blit(self._image_surf, (self.player.x, self.player.y))
+        self.gameDisplay.blit(self.playerIng, (self.player.x, self.player.y))
         self.player.update()
         pygame.display.flip()
         sleep(0.0159)
@@ -95,16 +101,16 @@ class App:
             pygame.event.pump()
             keys = pygame.key.get_pressed()
 
-            if keys[K_RIGHT] :
+            if keys[K_RIGHT]:
                 self.player.moveRight()
 
-            if keys[K_LEFT] :
+            if keys[K_LEFT]:
                 self.player.moveLeft()
 
-            if keys[K_UP] :
+            if keys[K_UP]:
                 self.player.jump()
 
-            if keys[K_ESCAPE] :
+            if keys[K_ESCAPE]:
                 self._running = False
 
             self.on_loop()
