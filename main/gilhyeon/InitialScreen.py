@@ -2,10 +2,9 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import sys
 import os
-import main.display.SelectConversation
 
 os.chdir(os.path.dirname(os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))))
-
+print("gi")
 class App(QWidget):
     def __init__(self):
         super().__init__()
