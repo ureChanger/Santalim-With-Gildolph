@@ -4,7 +4,6 @@ import sys
 import os
 
 os.chdir(os.path.dirname(os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))))
-print("gi")
 class App(QWidget):
     def __init__(self):
         super().__init__()
