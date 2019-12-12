@@ -5,247 +5,249 @@ import os
 from pygame import mixer
 
 class StageOneSnowTheme:
-    def events():
+    def __init__(self):
+        self.W, self.H = 900, 646
+        self.HW, self.HH = self.W / 2, self.H / 2
+        self.AREA = self.W + self.H
+
+        os.environ['SDL_VIDEO_WINDOW_POS'] = "50,50"
+
+        pygame.init()
+        os.chdir(os.path.dirname(os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))))
+        self.CLOCK = pygame.time.Clock()
+        self.DS = pygame.display.set_mode((self.W, self.H))
+        pygame.display.set_caption("BackgroundScrolling with Player")
+        self.FPS = 400
+
+        # define some colors
+        self.BLACK = (0, 0, 0, 255)
+        self.WHITE = (255, 255, 255, 255)
+        self.PASTEL_BLUE = (217, 241, 255, 200)
+        self.PASTEL_RED = (255, 114, 114, 255)
+        self.PASTEL_GRAY = (80, 78, 82, 255)
+        self.GOLD = (189, 150, 25, 255)
+
+        self.bg = pygame.image.load('drawable/bkgd_winter2.jpg').convert()
+        self.bgWidth, self.bgHeight = self.bg.get_rect().size
+
+        self.stageWidth = self.bgWidth * 2
+        self.stagePosX = 0
+
+        self.startScrollingPosX = self.HW
+
+        self.circleRadius = 25
+        self.circlePosX = self.circleRadius
+
+        self.playerPosX = self.circleRadius + 50
+        self.playerPosY = 485
+        self.playerVelocityX = 0
+
+        self.playerVelocityY = 90
+        self.playerVelocityDouble = 180
+        self.m = 5
+
+        self.x = 0
+
+        self.score = 0
+
+        self.isjump = False
+        self.doublejump = False
+        self.doubleCheck = False
+
+        self.present = pygame.image.load("drawable/sled.png")
+        self.present = pygame.transform.scale(self.present, (120, 150))
+
+        self.gameoverback = pygame.image.load("drawable/gameoverBack.jpg")
+        self.gameoverback = pygame.transform.scale(self.gameoverback, (1147, 646))
+
+        # Monster
+        self.monsterNumber = 0
+        self.monsterPosX = 1000
+        self.monsterPosY = 355
+        self.monster_die = pygame.image.load("drawable/big-bang.png")
+        self.monster_die = pygame.transform.scale(self.monster_die, (100, 100))
+
+        self.monster_left = pygame.image.load("drawable/alien.png")
+        self.monsterWidth, monsterHeight = self.monster_left.get_rect().size
+
+        self.monster_right = pygame.image.load("drawable/alien2.png")
+
+        self.isMonsterDie = False
+
+        self.stolen = False
+        self.game_over = False
+
+        self.fontObj = pygame.font.Font("drawable/amatic/AmaticSC-Regular.ttf", 140)
+        self.textSurfaceObj = self.fontObj.render("Game Over ! ", True, self.GOLD)
+        self.textRectObj = self.textSurfaceObj.get_rect()
+        self.textRectObj.center = (475, 480)
+
+        self.fontObj2 = pygame.font.Font("drawable/seoul_hangang.ttf", 23)
+        self.textSurfaceObj2 = self.fontObj2.render("다시 시작하기 위해서는 화면을 클릭해주세요", True, self.WHITE)
+        self.textRectObj2 = self.textSurfaceObj2.get_rect()
+        self.textRectObj2.center = (460, 610)
+
+        self.fontObj3 = pygame.font.Font("drawable/amatic/AmaticSC-Regular.ttf", 50)
+
+        self.christmas_music = "drawable/music2.mp3"
+        mixer.init()
+        mixer.music.load(self.christmas_music)
+        mixer.music.play(-1)
+
+        self.monster_touch_music = pygame.mixer.Sound("drawable/monster_touch.wav")
+
+    def events(self):
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                 pygame.quit()
                 sys.exit()
 
-    W,H = 900, 646
-    HW, HH = W/2, H/2
-    AREA = W+H
 
-    os.environ['SDL_VIDEO_WINDOW_POS'] = "50,50"
+    def run(self):
+        while True:
+            self.events()
+            self.monster_touch_music = pygame.mixer.Sound("drawable/monster_touch.wav")
 
-    pygame.init()
-    os.chdir(os.path.dirname(os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))))
-    CLOCK = pygame.time.Clock()
-    DS = pygame.display.set_mode((W,H))
-    pygame.display.set_caption("BackgroundScrolling with Player")
-    FPS = 500
+            #사용자 클릭 이벤트
+            k=pygame.key.get_pressed()
+            if self.stolen == False :
+                if k[K_RIGHT] or k[K_LEFT] or k[K_UP] or k[K_SPACE]:
+                    if k[K_RIGHT]:
+                        self.playerVelocityX = 2
+                    if k[K_LEFT]:
+                        self.playerVelocityX = -3
+                    if k[K_UP]:
+                        self.isjump = True
+                    if k[K_SPACE]:
+                        if self.isjump == True:
+                            if self.playerVelocityY<0:
+                                self.doublejump = True
 
-    #define some colors
-    BLACK =  (0,0,0,255)
-    WHITE = (255,255,255,255)
-    PASTEL_BLUE = (217,241,255,200)
-    PASTEL_RED = (255,114,114,255)
-    PASTEL_GRAY = (80,78,82,255)
-    GOLD = (189,150,25,255)
+                else:
+                    self.playerVelocityX = -1
 
-    bg = pygame.image.load('drawable/bkgd_winter2.jpg').convert()
-    bgWidth, bgHeight = bg.get_rect().size
-
-    stageWidth = bgWidth*2
-    stagePosX = 0
-
-    startScrollingPosX = HW
-
-    circleRadius = 25
-    circlePosX = circleRadius
-
-    playerPosX = circleRadius +50
-    playerPosY = 485
-    playerVelocityX = 0
-
-    playerVelocityY = 90
-    playerVelocityDouble = 180
-    m = 5
-
-    x = 0
-
-    score = 0
-
-    isjump = False
-    doublejump = False
-    doubleCheck = False
-
-    present = pygame.image.load("drawable/sled.png")
-    present = pygame.transform.scale(present,(120,150))
-
-    gameoverback = pygame.image.load("drawable/gameoverBack.jpg")
-    gameoverback = pygame.transform.scale(gameoverback,(1147,646))
-
-    #Monster
-    monsterNumber = 0
-    monsterPosX = 1000
-    monsterPosY = 355
-    monster_die = pygame.image.load("drawable/big-bang.png")
-    monster_die = pygame.transform.scale(monster_die,(100,100))
-
-    monster_left = pygame.image.load("drawable/alien.png")
-    monsterWidth,monsterHeight = monster_left.get_rect().size
-
-    monster_right = pygame.image.load("drawable/alien2.png")
-
-    isMonsterDie = False
-
-    stolen = False
-    game_over = False
-
-    fontObj = pygame.font.Font("drawable/amatic/AmaticSC-Regular.ttf",140)
-    textSurfaceObj = fontObj.render("Game Over ! ",True,GOLD)
-    textRectObj = textSurfaceObj.get_rect()
-    textRectObj.center = (475,480)
-
-    fontObj2 = pygame.font.Font("drawable/seoul_hangang.ttf", 23)
-    textSurfaceObj2 = fontObj2.render("다시 시작하기 위해서는 화면을 클릭해주세요", True, WHITE)
-    textRectObj2 = textSurfaceObj2.get_rect()
-    textRectObj2.center = (460, 610)
-
-    fontObj3 = pygame.font.Font("drawable/amatic/AmaticSC-Regular.ttf", 50)
-
-    christmas_music = "drawable/music2.mp3"
-    mixer.init()
-    mixer.music.load(christmas_music)
-    mixer.music.play(-1)
-
-    monster_touch_music = pygame.mixer.Sound("drawable/monster_touch.wav")
-
-    while True:
-        events()
-        monster_touch_music = pygame.mixer.Sound("drawable/monster_touch.wav")
-
-        #사용자 클릭 이벤트
-        k=pygame.key.get_pressed()
-        if stolen == False :
-            if k[K_RIGHT] or k[K_LEFT] or k[K_UP] or k[K_SPACE]:
-                if k[K_RIGHT]:
-                    playerVelocityX = 2
-                if k[K_LEFT]:
-                    playerVelocityX = -2
-                if k[K_UP]:
-                    isjump = True
-                if k[K_SPACE]:
-                    if isjump == True:
-                        if playerVelocityY<0:
-                            doublejump = True
-
+            #배경 스크롤링
+            if self.playerPosX < self.startScrollingPosX:
+                self.circlePosX = self.playerPosX
+            elif self.playerPosX > self.stagePosX - self.startScrollingPosX:
+                self.circlePosX = self.playerPosX - self.stagePosX + self.W
             else:
-                playerVelocityX = -1
+                self.circlePosX = self.startScrollingPosX
+                self.stagePosX += -self.playerVelocityX
+            self.stagePosX -= 0.8
+            self.rel_x = self.stagePosX % self.bgWidth
+            self.DS.blit(self.bg, (self.rel_x - self.bgWidth, 0))
+            if self.rel_x < self.W:
+                self.DS.blit(self.bg, (self.rel_x, 0))
 
-        #배경 스크롤링
-        if playerPosX < startScrollingPosX:
-            circlePosX = playerPosX
-        elif playerPosX > stagePosX - startScrollingPosX:
-            circlePosX = playerPosX - stagePosX + W
-        else:
-            circlePosX = startScrollingPosX
-            stagePosX += -playerVelocityX
-        stagePosX -= 0.8
-        rel_x = stagePosX % bgWidth
-        DS.blit(bg, (rel_x - bgWidth, 0))
-        if rel_x < W:
-            DS.blit(bg, (rel_x, 0))
+            if self.stolen == False:
+                self.textSurfaceObj3 = self.fontObj3.render(("Monster to beat    " + str(self.score) + " / 20"), True, self.GOLD)
+                self.textRectObj3 = self.textSurfaceObj3.get_rect()
+                self.textRectObj3.center = (475, 50)
+                self.DS.blit(self.textSurfaceObj3, self.textRectObj3)
 
-        if stolen == False:
-            textSurfaceObj3 = fontObj3.render(("Monster to beat    " + str(score) + " / 20"), True, GOLD)
-            textRectObj3 = textSurfaceObj3.get_rect()
-            textRectObj3.center = (475, 50)
-            DS.blit(textSurfaceObj3, textRectObj3)
+                # 플레이어 일반 점프
+                if not self.doublejump:
+                    if self.isjump:
+                        # 힘을 계산한다( F = 0.5 * m * v*v )
+                        if self.playerVelocityY > 0:
+                            F = (0.5 * self.m * self.playerVelocityY * self.playerVelocityY * 0.0002)
+                        else:
+                            F = -(0.5 * self.m * self.playerVelocityY * self.playerVelocityY * 0.0004)
 
-            # 플레이어 일반 점프
-            if not doublejump:
-                if isjump:
+                        self.playerPosY = self.playerPosY - F
+
+                        self.playerVelocityY = self.playerVelocityY - 1
+
+                        if self.playerPosY >= 485:
+                            self.playerPosY = 485
+                            self.isjump = False
+                            self.playerVelocityY = 90
+
+                # 플레이어 더블 점프
+                elif self.doublejump:
                     # 힘을 계산한다( F = 0.5 * m * v*v )
-                    if playerVelocityY > 0:
-                        F = (0.5 * m * playerVelocityY * playerVelocityY * 0.0002)
+                    if self.playerVelocityDouble > 0:
+                        F = (0.5 * self.m * self.playerVelocityDouble * self.playerVelocityDouble * 0.000033)
                     else:
-                        F = -(0.5 * m * playerVelocityY * playerVelocityY * 0.00004)
+                        F = -(0.5 * self.m * self.playerVelocityDouble * self.playerVelocityDouble * 0.0005)
 
-                    playerPosY = playerPosY - F
+                    self.playerPosY = self.playerPosY - F
 
-                    playerVelocityY = playerVelocityY - 1
+                    self.playerVelocityDouble = self.playerVelocityDouble - 1
 
-                    if playerPosY >= 485:
-                        playerPosY = 485
-                        isjump = False
-                        playerVelocityY = 90
+                    if self.playerPosY >= 485:
+                        self.playerPosY = 485
+                        self.isjump = False
+                        self.playerVelocityY = 90
+                        self.playerVelocityDouble = 180
+                        self.doublejump = False
+                        self.m = 5
 
-            # 플레이어 더블 점프
-            elif doublejump:
-                # 힘을 계산한다( F = 0.5 * m * v*v )
-                if playerVelocityDouble > 0:
-                    F = (0.5 * m * playerVelocityDouble * playerVelocityDouble * 0.000033)
-                else:
-                    F = -(0.5 * m * playerVelocityDouble * playerVelocityDouble * 0.0005)
+                self.playerPosX += self.playerVelocityX
 
-                playerPosY = playerPosY - F
-
-                playerVelocityDouble = playerVelocityDouble - 1
-
-                if playerPosY >= 485:
-                    playerPosY = 485
-                    isjump = False
-                    playerVelocityY = 90
-                    playerVelocityDouble = 180
-                    doublejump = False
-                    m = 5
-
-            playerPosX += playerVelocityX
-
-            # 배경 한계선 설정
-            if playerPosX > stageWidth - circleRadius: playerPosX = stageWidth - circleRadius
-            if playerPosX < circleRadius + 25: playerPosX = circleRadius + 25
-            if playerPosX >= 800 - circleRadius: playerPosX = 800 - circleRadius
+                # 배경 한계선 설정
+                if self.playerPosX > self.stageWidth - self.circleRadius: self.playerPosX = self.stageWidth - self.circleRadius
+                if self.playerPosX < self.circleRadius + 25: self.playerPosX = self.circleRadius + 25
+                if self.playerPosX >= 800 - self.circleRadius: self.playerPosX = 800 - self.circleRadius
 
 
-            # 점프 상태에 따른 색 변화
-            if not doublejump:
-                pygame.draw.circle(DS, WHITE, (playerPosX, int(playerPosY - circleRadius)), circleRadius, 0)
-            elif doublejump:
-                if playerVelocityDouble <= 8:
-                    pygame.draw.circle(DS, PASTEL_RED, (playerPosX, int(playerPosY - circleRadius)), circleRadius, 0)
-                else:
-                    pygame.draw.circle(DS, PASTEL_BLUE, (playerPosX, int(playerPosY - circleRadius)), circleRadius, 0)
+                # 점프 상태에 따른 색 변화
+                if not self.doublejump:
+                    pygame.draw.circle(self.DS, self.WHITE, (self.playerPosX, int(self.playerPosY - self.circleRadius)), self.circleRadius, 0)
+                elif self.doublejump:
+                    if self.playerVelocityDouble <= 8:
+                        pygame.draw.circle(self.DS, self.PASTEL_RED, (self.playerPosX, int(self.playerPosY - self.circleRadius)), self.circleRadius, 0)
+                    else:
+                        pygame.draw.circle(self.DS, self.PASTEL_BLUE, (self.playerPosX, int(self.playerPosY - self.circleRadius)), self.circleRadius, 0)
 
-            #몬스터 출현
-            if isMonsterDie == False:
-                if monsterPosX > 92+playerPosX/9:
-                    DS.blit(monster_left,(monsterPosX, monsterPosY))
-                    monsterPosX -= 1.2
-                elif monsterPosX <= 92+playerPosX/9:
-                    stolen = True
+                #몬스터 출현
+                if self.isMonsterDie == False:
+                    if self.monsterPosX > 92+self.playerPosX/9:
+                        self.DS.blit(self.monster_left,(self.monsterPosX, self.monsterPosY))
+                        self.monsterPosX -= 1.2
+                    elif self.monsterPosX <= 92+self.playerPosX/9:
+                        self.stolen = True
 
-                # 충돌
-                if doublejump:
-                    if playerVelocityDouble < 0:
-                         if playerPosX <= monsterPosX + monsterWidth / 2 + 5 and playerPosX >= monsterPosX - monsterWidth / 2 + 5 and playerPosY + 25 >= monsterPosY:
-                            monster_touch_music.play(0)
-                            DS.blit(monster_die, (monsterPosX + 10, monsterPosY))
-                            isMonsterDie = True
-                            score += 1
+                    # 충돌
+                    if self.doublejump:
+                        if self.playerVelocityDouble < 0:
+                             if self.playerPosX <= self.monsterPosX + self.monsterWidth / 2 + 5 and self.playerPosX >= self.monsterPosX - self.monsterWidth / 2 + 5 and self.playerPosY + 25 >= self.monsterPosY:
+                                self.monster_touch_music.play(0)
+                                self.DS.blit(self.monster_die, (self.monsterPosX + 10, self.monsterPosY))
+                                self.isMonsterDie = True
+                                self.score += 1
 
-            else :
-                DS.blit(monster_die,(monsterPosX,monsterPosY))
-                monsterPosX -= 2
-                monsterPosY -= 1
-                if monsterPosX <= -50:
-                    isMonsterDie = False
-                    monsterPosX = 950
-                    monsterPosY = 355
+                else :
+                    self.DS.blit(self.monster_die,(self.monsterPosX,self.monsterPosY))
+                    self.monsterPosX -= 2
+                    self.monsterPosY -= 1
+                    if self.monsterPosX <= -50:
+                        self.isMonsterDie = False
+                        self.monsterPosX = 950
+                        self.monsterPosY = 355
 
-            #선물더미 그리기
-            DS.blit(present, (playerPosX/9, 355))
-            pygame.draw.line(DS, PASTEL_GRAY, (92+playerPosX/9, 450), (playerPosX, playerPosY - 25), 5)
+                #선물더미 그리기
+                self.DS.blit(self.present, (self.playerPosX/9, 355))
+                pygame.draw.line(self.DS, self.PASTEL_GRAY, (92+self.playerPosX/9, 450), (self.playerPosX, self.playerPosY - 25), 5)
 
 
 
-        elif not monsterPosX >= 1100:
-            #몬스터가 선물 가져감
-            DS.blit(present, (monsterPosX-100, 355))
-            DS.blit(monster_right, (monsterPosX+20, monsterPosY))
-            pygame.draw.line(DS, PASTEL_GRAY, (monsterPosX-16, 450), (monsterPosX + 55, monsterPosY +80), 5)
-            monsterPosX += 1
-            if monsterPosX >= 1100:
-                game_over = True
+            elif not self.monsterPosX >= 1100:
+                #몬스터가 선물 가져감
+                self.DS.blit(self.present, (self.monsterPosX-100, 355))
+                self.DS.blit(self.monster_right, (self.monsterPosX+20, self.monsterPosY))
+                pygame.draw.line(self.DS, self.PASTEL_GRAY, (self.monsterPosX-16, 450), (self.monsterPosX + 55, self.monsterPosY +80), 5)
+                self.monsterPosX += 1
+                if self.monsterPosX >= 1100:
+                    self.game_over = True
 
-        if game_over :
-            DS.fill(BLACK)
-            DS.blit(gameoverback,(-123,0))
-            DS.blit(textSurfaceObj2, textRectObj2)
-            DS.blit(textSurfaceObj, textRectObj)
+            if self.game_over :
+                self.DS.fill(self.BLACK)
+                self.DS.blit(self.gameoverback,(-123,0))
+                self.DS.blit(self.textSurfaceObj2, self.textRectObj2)
+                self.DS.blit(self.textSurfaceObj, self.textRectObj)
 
-
-        pygame.display.update()
-        CLOCK.tick(FPS)
-        DS.fill(BLACK)
+            pygame.display.update()
+            self.CLOCK.tick(self.FPS)
+            self.DS.fill(self.BLACK)
