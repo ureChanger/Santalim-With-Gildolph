@@ -65,10 +65,10 @@ while run :
         if event.type == pygame.MOUSEMOTION:
             if button1.isOver(pos):
                 button1.color = (255, 255, 0)
-            else :
+            else:
                 button1.color = (172, 164, 255)
 
             if button2.isOver(pos):
                 button2.color = (250, 250, 0)
-            else :
+            else:
                 button2.color = (172, 164, 255)
