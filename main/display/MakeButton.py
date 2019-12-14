@@ -24,8 +24,3 @@ class MakeButton():
             if pos[1] > self.y and pos[1] < self.y + self.height:
                 return True
         return False
-
-    # def redrawWindow():
-    #     nextButton.draw(screen, (0, 0, 0))
-    #     selectbutton1.draw(screen, (0, 0, 0))
-    #     selectbutton2.draw(screen, (0, 0, 0))
