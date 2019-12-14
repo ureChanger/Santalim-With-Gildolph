@@ -61,9 +61,9 @@ class GameStart:
     def Take5(self):
         crysanta = pygame.image.load('drawable/crysanta.PNG')
         self.screen.blit(pygame.transform.scale(crysanta, (640, 480)), (0, 0))
-        font = pygame.font.SysFont("comicsansms", 30)
-        text2 = font.render(self.convItem.item[3], True, ((0, 0, 0)))
-        self.screen.blit(text2, (100, 390))
+        font = pygame.font.SysFont("comicsansms", 28)
+        text2 = font.render(self.convItem.item[3], True, ((255, 255, 255)))
+        self.screen.blit(text2, (120, 330))
 
     # (유저네임)동글이가 간다
     def Take6(self):
