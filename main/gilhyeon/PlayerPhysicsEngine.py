@@ -28,7 +28,7 @@ class Player:
 
     def update(self):
         if self.isjump:
-            print("y 좌표 : ",self.y)
+            print("y 좌표 : ", self.y)
             print("v : ",self.v)
 
             #힘을 계산한다( F = 0.5 * m * v*v )
