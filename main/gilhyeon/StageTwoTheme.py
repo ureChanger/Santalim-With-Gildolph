@@ -3,6 +3,7 @@ from pygame.locals import *
 import sys
 import os
 from pygame import mixer
+import time
 
 class StageTwoSnowTheme:
     def __init__(self):
@@ -101,6 +102,9 @@ class StageTwoSnowTheme:
         self.monster_touch_music = pygame.mixer.Sound("drawable/monster_touch.wav")
 
         self.bg_floor = pygame.image.load("drawable/snow_floor.jpg")
+
+        self.startTime = time.time()
+        self.currentTime = 0
 
 
     def events(self):
@@ -227,22 +231,27 @@ class StageTwoSnowTheme:
                         self.stolen = True
 
                     # 충돌
-                    if self.playerPosY >= 470 and self.playerPosY < 485:
-                        if self.isMonsterHit == True:
-                            self.monsterHit += 1
+                    if self.isMonsterHit == True:
+                        print("isMonsterHit == True")
+                        self.monsterHit += 1
+                        self.isMonsterHit = False
+                        if self.monsterHit == 2 :
+                            print("monsterHint == 2")
+                            self.isMonsterDie = True
+                            self.score += 1
                             self.isMonsterHit = False
-                            if self.monsterHit == 2 :
-                                self.isMonsterDie = True
-                                self.score += 1
-                                self.isMonsterHit = False
-                                self.monsterHit = 0
+                            self.monsterHit = 0
 
                     if self.doublejump:
                         if self.playerVelocityDouble < 0:
-                             if self.playerPosX <= self.monsterPosX + self.monsterWidth / 2 + 5 and self.playerPosX >= self.monsterPosX - self.monsterWidth / 2 + 5 and self.playerPosY + 25 >= self.monsterPosY:
-                                self.monster_touch_music.play(0)
-                                self.DS.blit(self.monster_die, (self.monsterPosX + 10, self.monsterPosY))
-                                self.isMonsterHit = True
+                            if time.time() - self.startTime >= 0.5 :
+                                if self.playerPosX <= self.monsterPosX + self.monsterWidth / 2 + 5 and self.playerPosX >= self.monsterPosX - self.monsterWidth / 2 + 5 and self.playerPosY + 25 >= self.monsterPosY:
+                                    self.startTime = time.time()
+                                    print(self.playerPosY)
+                                    self.monster_touch_music.play(0)
+                                    self.DS.blit(self.monster_die, (self.monsterPosX + 10, self.monsterPosY))
+                                    self.isMonsterHit = True
+                                    print("Hit")
 
                 else :
                     self.DS.blit(self.monster_die,(self.monsterPosX,self.monsterPosY))
