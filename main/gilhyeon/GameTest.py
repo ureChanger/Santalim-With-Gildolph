@@ -5,16 +5,16 @@ from main.gilhyeon.FirstToSecond import FirstToSecond
 a = StageOneSnowTheme()
 stageOne = 0
 
+b = StageTwoSnowTheme()
+
 c = FirstToSecond()
 
 
 if(a.run()==1):
     print("1 스테이지 클리어")
-    stageOne = 1
 
-c.run()
+if(c.run()==1):
+    print("2 스테이지 시작")
 
-if stageOne:
-    b = StageTwoSnowTheme()
-    b.run()
+if(b.run()==1):
     print("2 스테이지 클리어")
