@@ -4,7 +4,7 @@ import sys
 import os
 from pygame import mixer
 
-class StageOneSnowTheme:
+class StageTwoSnowTheme:
     def __init__(self):
         self.W, self.H = 900, 640
         self.HW, self.HH = self.W / 2, self.H / 2
@@ -27,7 +27,7 @@ class StageOneSnowTheme:
         self.PASTEL_GRAY = (80, 78, 82, 255)
         self.GOLD = (189, 150, 25, 255)
 
-        self.bg = pygame.image.load('drawable/bkgd_winter2.jpg').convert()
+        self.bg = pygame.image.load('drawable/bkgd_stage2.png').convert()
         self.bgWidth, self.bgHeight = self.bg.get_rect().size
 
         self.stageWidth = self.bgWidth * 2
@@ -67,11 +67,15 @@ class StageOneSnowTheme:
         self.monster_die = pygame.image.load("drawable/big-bang.png")
         self.monster_die = pygame.transform.scale(self.monster_die, (100, 100))
 
-        self.monster_left = pygame.image.load("drawable/alien.png")
+        self.monster_left = pygame.image.load("drawable/greenAlien.png")
         self.monsterWidth, monsterHeight = self.monster_left.get_rect().size
 
-        self.monster_right = pygame.image.load("drawable/alien2.png")
+        self.monster_right = pygame.image.load("drawable/greenAlien2.png")
+        self.littleMonster_left = pygame.image.load("drawable/greenLittleAlien.png")
+        self.littleMonster_right = pygame.image.load("drawable/greenLittleAlien2.png")
 
+        self.isMonsterHit = False
+        self.monsterHit = 0
         self.isMonsterDie = False
 
         self.stolen = False
@@ -95,6 +99,8 @@ class StageOneSnowTheme:
         mixer.music.play(-1)
 
         self.monster_touch_music = pygame.mixer.Sound("drawable/monster_touch.wav")
+
+        self.bg_floor = pygame.image.load("drawable/snow_floor.jpg")
 
 
     def events(self):
@@ -132,6 +138,7 @@ class StageOneSnowTheme:
                     self.playerVelocityX = -5
 
             #배경 스크롤링
+
             if self.playerPosX < self.startScrollingPosX:
                 self.circlePosX = self.playerPosX
             elif self.playerPosX > self.stagePosX - self.startScrollingPosX:
@@ -141,9 +148,11 @@ class StageOneSnowTheme:
                 self.stagePosX += -self.playerVelocityX
             self.stagePosX -= 8
             self.rel_x = self.stagePosX % self.bgWidth
-            self.DS.blit(self.bg, (self.rel_x - self.bgWidth, 0))
+            self.DS.blit(self.bg, (self.rel_x - self.bgWidth, -28))
+            self.DS.blit(self.bg_floor, (self.rel_x-self.bgWidth, 475))
             if self.rel_x < self.W:
-                self.DS.blit(self.bg, (self.rel_x, 0))
+                self.DS.blit(self.bg, (self.rel_x, -28))
+                self.DS.blit(self.bg_floor,(self.rel_x, 475))
 
             if self.stolen == False:
                 self.textSurfaceObj3 = self.fontObj3.render(("Monster to beat    " + str(self.score) + " / 20"), True, self.GOLD)
@@ -209,19 +218,31 @@ class StageOneSnowTheme:
                 #몬스터 출현
                 if self.isMonsterDie == False:
                     if self.monsterPosX > 92+self.playerPosX/9:
-                        self.DS.blit(self.monster_left,(self.monsterPosX, self.monsterPosY))
+                        if self.monsterHit == 0 :
+                            self.DS.blit(self.monster_left,(self.monsterPosX, self.monsterPosY))
+                        elif self.monsterHit == 1 :
+                            self.DS.blit(self.littleMonster_left, (self.monsterPosX, self.monsterPosY))
                         self.monsterPosX -= 3
                     elif self.monsterPosX <= 92+self.playerPosX/9:
                         self.stolen = True
 
                     # 충돌
+                    if self.playerPosY >= 470 and self.playerPosY < 485:
+                        if self.isMonsterHit == True:
+                            self.monsterHit += 1
+                            self.isMonsterHit = False
+                            if self.monsterHit == 2 :
+                                self.isMonsterDie = True
+                                self.score += 1
+                                self.isMonsterHit = False
+                                self.monsterHit = 0
+
                     if self.doublejump:
                         if self.playerVelocityDouble < 0:
                              if self.playerPosX <= self.monsterPosX + self.monsterWidth / 2 + 5 and self.playerPosX >= self.monsterPosX - self.monsterWidth / 2 + 5 and self.playerPosY + 25 >= self.monsterPosY:
                                 self.monster_touch_music.play(0)
                                 self.DS.blit(self.monster_die, (self.monsterPosX + 10, self.monsterPosY))
-                                self.isMonsterDie = True
-                                self.score += 1
+                                self.isMonsterHit = True
 
                 else :
                     self.DS.blit(self.monster_die,(self.monsterPosX,self.monsterPosY))
@@ -251,10 +272,9 @@ class StageOneSnowTheme:
                 self.DS.blit(self.gameoverback,(-123,0))
                 self.DS.blit(self.textSurfaceObj2, self.textRectObj2)
                 self.DS.blit(self.textSurfaceObj, self.textRectObj)
-
                 if pygame.key.get_pressed()[K_r]:
-                    restart = StageOneSnowTheme()
-                    if restart.run():
+                    restart = StageTwoSnowTheme()
+                    if(restart.run()):
                         return 1
 
             pygame.display.update()
