@@ -6,5 +6,9 @@ class ConversationItem():
         'Please somebody find my present..',
         "I'll find all presents and get it !",
         'Game Description',
-        'Game Start'
+        'Game Start',
+        'Jump and hit the monster on the head !',
+        'If the monster approaches the sled,',
+        'the sled is dragged by the monster and the game is over.',
+        '...?'
     ]

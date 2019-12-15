@@ -54,8 +54,11 @@ class GameStart:
 
     # 산타집을 턴 도둑, 눈 앞에서 선물 뺏긴 산타
     def Take4(self):
-        self.beggarSanta = pygame.image.load("drawable/beggarSanta.PNG")
+        font = pygame.font.SysFont("comicsansms", 80)
+        self.beggarSanta = pygame.image.load("drawable/sadSanta.PNG")
         self.screen.blit(pygame.transform.scale(self.beggarSanta, (640, 480)), (0, 0))
+        self.text7 = font.render(self.convItem.item[10], True, ((0, 0, 0)))
+        self.screen.blit(self.text7, (180, 100))
 
     # 산타 슬퍼 누가 내 선물 찾아와
     def Take5(self):
@@ -80,9 +83,19 @@ class GameStart:
     # 게임 설명 넣기
     def Take8(self):
         self.screen.fill((0, 0, 0))
-        font = pygame.font.SysFont("comicsansms", 40)
-        self.text4 = font.render(self.convItem.item[5], True, ((255, 255, 255)))
-        self.screen.blit(self.text4, (150, 370))
+        font = pygame.font.SysFont("comicsansms", 20)
+        self.text4 = font.render(self.convItem.item[7], True, ((252, 88, 0)))
+        self.text5 = font.render(self.convItem.item[8], True, ((252, 88, 0)))
+        self.text6 = font.render(self.convItem.item[9], True, ((252, 88, 0)))
+        self.screen.blit(self.text4, (30, 300))
+        self.screen.blit(self.text5, (30, 345))
+        self.screen.blit(self.text6, (30, 370))
+        self.snowjump = pygame.image.load('drawable/snowjump.jpg')
+        self.catch = pygame.image.load('drawable/catch.jpg')
+        self.snowjump = pygame.transform.scale(self.snowjump, (292, 219))
+        self.catch = pygame.transform.scale(self.catch, (292,219))
+        self.screen.blit(self.snowjump, (20, 30))
+        self.screen.blit(self.catch, (330, 30))
 
     def Run(self):
         while self.run:
