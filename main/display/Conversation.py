@@ -2,6 +2,7 @@ import pygame
 import os
 import main.item.ConversationItem
 import main.display.MakeButton
+from main.gilhyeon.GameTest import MainGame
 
 class GameStart:
 
@@ -25,6 +26,8 @@ class GameStart:
         self.button2 = self.makeButton((0, 108, 250), 20, 365, 600, 90, self.convItem.item[6])
         self.takeCheck = 1
         self.run = True
+
+        self.mainGame = MainGame()
 
     def redrawWindow(self):
         self.button1.draw(self.screen, (0, 0, 0))
@@ -139,7 +142,7 @@ class GameStart:
                         self.Take8()
                         print("button1 was clicked !")
                     elif self.button2.isOver(pos):
-                        import main.gilhyeon.GameTest
+                        self.mainGame.run()
                         print("button2 was clicked !")
 
                 if event.type == pygame.MOUSEMOTION:
