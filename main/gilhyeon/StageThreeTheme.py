@@ -5,6 +5,7 @@ import os
 from pygame import mixer
 import time
 
+
 class StageTwoSnowTheme:
     def __init__(self):
         self.W, self.H = 900, 640
@@ -106,7 +107,6 @@ class StageTwoSnowTheme:
         self.startTime = time.time()
         self.currentTime = 0
 
-
     def events(self):
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
@@ -118,12 +118,12 @@ class StageTwoSnowTheme:
             self.events()
             self.monster_touch_music = pygame.mixer.Sound("drawable/monster_touch.wav")
 
-            if self.score == 2 :
+            if self.score == 2:
                 return 1
 
-            #사용자 클릭 이벤트
-            k=pygame.key.get_pressed()
-            if self.stolen == False :
+            # 사용자 클릭 이벤트
+            k = pygame.key.get_pressed()
+            if self.stolen == False:
                 if k[K_RIGHT] or k[K_LEFT] or k[K_UP] or k[K_SPACE]:
                     if k[K_RIGHT]:
                         self.playerVelocityX = 8
@@ -133,13 +133,13 @@ class StageTwoSnowTheme:
                         self.isjump = True
                     if k[K_SPACE]:
                         if self.isjump == True:
-                            if self.playerVelocityY<0:
+                            if self.playerVelocityY < 0:
                                 self.doublejump = True
 
                 else:
                     self.playerVelocityX = -5
 
-            #배경 스크롤링
+            # 배경 스크롤링
 
             if self.playerPosX < self.startScrollingPosX:
                 self.circlePosX = self.playerPosX
@@ -151,13 +151,14 @@ class StageTwoSnowTheme:
             self.stagePosX -= 8
             self.rel_x = self.stagePosX % self.bgWidth
             self.DS.blit(self.bg, (self.rel_x - self.bgWidth, -28))
-            self.DS.blit(self.bg_floor, (self.rel_x-self.bgWidth, 475))
+            self.DS.blit(self.bg_floor, (self.rel_x - self.bgWidth, 475))
             if self.rel_x < self.W:
                 self.DS.blit(self.bg, (self.rel_x, -28))
-                self.DS.blit(self.bg_floor,(self.rel_x, 475))
+                self.DS.blit(self.bg_floor, (self.rel_x, 475))
 
             if self.stolen == False:
-                self.textSurfaceObj3 = self.fontObj3.render(("Monster to beat    " + str(self.score) + " / 20"), True, self.GOLD)
+                self.textSurfaceObj3 = self.fontObj3.render(("Monster to beat    " + str(self.score) + " / 20"), True,
+                                                            self.GOLD)
                 self.textRectObj3 = self.textSurfaceObj3.get_rect()
                 self.textRectObj3.center = (475, 50)
                 self.DS.blit(self.textSurfaceObj3, self.textRectObj3)
@@ -167,9 +168,9 @@ class StageTwoSnowTheme:
                     if self.isjump:
                         # 힘을 계산한다( F = 0.5 * m * v*v )
                         if self.playerVelocityY > 0:
-                            F = (0.5 * self.m * self.playerVelocityY * self.playerVelocityY*0.008)
+                            F = (0.5 * self.m * self.playerVelocityY * self.playerVelocityY * 0.008)
                         else:
-                            F = -(0.5 * self.m * self.playerVelocityY * self.playerVelocityY*0.004)
+                            F = -(0.5 * self.m * self.playerVelocityY * self.playerVelocityY * 0.004)
 
                         self.playerPosY = self.playerPosY - F
 
@@ -207,25 +208,29 @@ class StageTwoSnowTheme:
                 if self.playerPosX < self.circleRadius + 25: self.playerPosX = self.circleRadius + 25
                 if self.playerPosX >= 800 - self.circleRadius: self.playerPosX = 800 - self.circleRadius
 
-
                 # 점프 상태에 따른 색 변화
                 if not self.doublejump:
-                    pygame.draw.circle(self.DS, self.WHITE, (self.playerPosX, int(self.playerPosY - self.circleRadius)), self.circleRadius, 0)
+                    pygame.draw.circle(self.DS, self.WHITE, (self.playerPosX, int(self.playerPosY - self.circleRadius)),
+                                       self.circleRadius, 0)
                 elif self.doublejump:
                     if self.playerVelocityDouble <= 8:
-                        pygame.draw.circle(self.DS, self.PASTEL_RED, (self.playerPosX, int(self.playerPosY - self.circleRadius)), self.circleRadius, 0)
+                        pygame.draw.circle(self.DS, self.PASTEL_RED,
+                                           (self.playerPosX, int(self.playerPosY - self.circleRadius)),
+                                           self.circleRadius, 0)
                     else:
-                        pygame.draw.circle(self.DS, self.PASTEL_BLUE, (self.playerPosX, int(self.playerPosY - self.circleRadius)), self.circleRadius, 0)
+                        pygame.draw.circle(self.DS, self.PASTEL_BLUE,
+                                           (self.playerPosX, int(self.playerPosY - self.circleRadius)),
+                                           self.circleRadius, 0)
 
-                #몬스터 출현
+                # 몬스터 출현
                 if self.isMonsterDie == False:
-                    if self.monsterPosX > 92+self.playerPosX/9:
-                        if self.monsterHit == 0 :
-                            self.DS.blit(self.monster_left,(self.monsterPosX, self.monsterPosY))
-                        elif self.monsterHit == 1 :
+                    if self.monsterPosX > 92 + self.playerPosX / 9:
+                        if self.monsterHit == 0:
+                            self.DS.blit(self.monster_left, (self.monsterPosX, self.monsterPosY))
+                        elif self.monsterHit == 1:
                             self.DS.blit(self.littleMonster_left, (self.monsterPosX, self.monsterPosY))
                         self.monsterPosX -= 3
-                    elif self.monsterPosX <= 92+self.playerPosX/9:
+                    elif self.monsterPosX <= 92 + self.playerPosX / 9:
                         self.stolen = True
 
                     # 충돌
@@ -233,7 +238,7 @@ class StageTwoSnowTheme:
                         print("isMonsterHit == True")
                         self.monsterHit += 1
                         self.isMonsterHit = False
-                        if self.monsterHit == 2 :
+                        if self.monsterHit == 2:
                             print("monsterHint == 2")
                             self.isMonsterDie = True
                             self.score += 1
@@ -242,7 +247,7 @@ class StageTwoSnowTheme:
 
                     if self.doublejump:
                         if self.playerVelocityDouble < 0:
-                            if time.time() - self.startTime >= 0.5 :
+                            if time.time() - self.startTime >= 0.5:
                                 if self.playerPosX <= self.monsterPosX + self.monsterWidth / 2 + 5 and self.playerPosX >= self.monsterPosX - self.monsterWidth / 2 + 5 and self.playerPosY + 25 >= self.monsterPosY:
                                     self.startTime = time.time()
                                     print(self.playerPosY)
@@ -251,8 +256,8 @@ class StageTwoSnowTheme:
                                     self.isMonsterHit = True
                                     print("Hit")
 
-                else :
-                    self.DS.blit(self.monster_die,(self.monsterPosX,self.monsterPosY))
+                else:
+                    self.DS.blit(self.monster_die, (self.monsterPosX, self.monsterPosY))
                     self.monsterPosX -= 5
                     self.monsterPosY -= 3
                     if self.monsterPosX <= -50:
@@ -260,28 +265,30 @@ class StageTwoSnowTheme:
                         self.monsterPosX = 950
                         self.monsterPosY = 355
 
-                #선물더미 그리기
-                self.DS.blit(self.present, (self.playerPosX/9, 355))
-                pygame.draw.line(self.DS, self.PASTEL_GRAY, (92+self.playerPosX/9, 450), (self.playerPosX, self.playerPosY - 25), 5)
+                # 선물더미 그리기
+                self.DS.blit(self.present, (self.playerPosX / 9, 355))
+                pygame.draw.line(self.DS, self.PASTEL_GRAY, (92 + self.playerPosX / 9, 450),
+                                 (self.playerPosX, self.playerPosY - 25), 5)
 
 
             elif not self.monsterPosX >= 1100:
-                #몬스터가 선물 가져감
-                self.DS.blit(self.present, (self.monsterPosX-100, 355))
-                self.DS.blit(self.monster_right, (self.monsterPosX+20, self.monsterPosY))
-                pygame.draw.line(self.DS, self.PASTEL_GRAY, (self.monsterPosX-16, 450), (self.monsterPosX + 55, self.monsterPosY +80), 5)
+                # 몬스터가 선물 가져감
+                self.DS.blit(self.present, (self.monsterPosX - 100, 355))
+                self.DS.blit(self.monster_right, (self.monsterPosX + 20, self.monsterPosY))
+                pygame.draw.line(self.DS, self.PASTEL_GRAY, (self.monsterPosX - 16, 450),
+                                 (self.monsterPosX + 55, self.monsterPosY + 80), 5)
                 self.monsterPosX += 6
                 if self.monsterPosX >= 1100:
                     self.game_over = True
 
-            if self.game_over :
+            if self.game_over:
                 self.DS.fill(self.BLACK)
-                self.DS.blit(self.gameoverback,(-123,0))
+                self.DS.blit(self.gameoverback, (-123, 0))
                 self.DS.blit(self.textSurfaceObj2, self.textRectObj2)
                 self.DS.blit(self.textSurfaceObj, self.textRectObj)
                 if pygame.key.get_pressed()[K_r]:
                     restart = StageTwoSnowTheme()
-                    if(restart.run()):
+                    if (restart.run()):
                         return 1
 
             pygame.display.update()
