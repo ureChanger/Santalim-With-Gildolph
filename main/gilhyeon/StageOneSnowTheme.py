@@ -109,7 +109,7 @@ class StageOneSnowTheme:
             self.events()
             self.monster_touch_music = pygame.mixer.Sound("drawable/monster_touch.wav")
 
-            if self.score == 2 :
+            if self.score == 20 :
                 return 1
 
 
