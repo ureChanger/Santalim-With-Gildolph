@@ -3,6 +3,7 @@ from main.gilhyeon.StageTwoTheme import StageTwoSnowTheme
 from main.gilhyeon.FirstToSecond import FirstToSecond
 from main.gilhyeon.StageThreeTheme import StageThreeSnowTheme
 from main.gilhyeon.SecondToThird import SecondToThird
+from main.display.EndingScreen import endingScene
 
 class MainGame:
     def run(self):
@@ -31,7 +32,10 @@ class MainGame:
 
         if (self.thirdStage.run() == 1):
             print("3 스테이지 클리어")
+            endstart = endingScene()
+            endstart.endingRun()
+
 
 #Test
-test = MainGame()
-test.run()
+# test = MainGame()
+# test.run()

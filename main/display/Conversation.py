@@ -27,7 +27,7 @@ class GameStart:
         self.takeCheck = 1
         self.run = True
 
-        self.mainGame = MainGame()
+
 
     def redrawWindow(self):
         self.button1.draw(self.screen, (0, 0, 0))
@@ -143,7 +143,8 @@ class GameStart:
                         print("button1 was clicked !")
                     elif self.button2.isOver(pos):
                         print("button2 was clicked !")
-                        return 1
+                        self.mainGame = MainGame()
+                        self.mainGame.run()
 
                 if event.type == pygame.MOUSEMOTION:
                     if self.button1.isOver(pos):
