@@ -1,22 +1,37 @@
 from main.gilhyeon.StageOneSnowTheme import StageOneSnowTheme
 from main.gilhyeon.StageTwoTheme import StageTwoSnowTheme
 from main.gilhyeon.FirstToSecond import FirstToSecond
+from main.gilhyeon.StageThreeTheme import StageThreeSnowTheme
+from main.gilhyeon.SecondToThird import SecondToThird
 
 class MainGame:
     def run(self):
-        self.a = StageOneSnowTheme()
-        self.stageOne = 0
+        self.fistStage = StageOneSnowTheme()
 
-        self.b = StageTwoSnowTheme()
+        self.firstToSecond = FirstToSecond()
 
-        self.c = FirstToSecond()
+        self.secondStage = StageTwoSnowTheme()
+
+        self.secondToThird = SecondToThird()
+
+        self.thirdStage = StageThreeSnowTheme()
 
 
-        if(self.a.run()==1):
+        if(self.fistStage.run()==1):
             print("1 스테이지 클리어")
 
-        if(self.c.run()==1):
+        if(self.firstToSecond.run()==1):
             print("2 스테이지 시작")
 
-        if(self.b.run()==1):
+        if(self.secondStage.run()==1):
             print("2 스테이지 클리어")
+
+        if (self.secondToThird.run() == 1):
+            print("3 스테이지 시작")
+
+        if (self.thirdStage.run() == 1):
+            print("3 스테이지 클리어")
+
+#Test
+test = MainGame()
+test.run()

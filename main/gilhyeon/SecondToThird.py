@@ -4,7 +4,7 @@ import sys
 from pygame.locals import *
 import time
 
-class FirstToSecond :
+class SecondToThird :
     def __init__(self):
         self.startTime = time.time()
 
@@ -24,36 +24,31 @@ class FirstToSecond :
 
         #사진로드
 
-        self.bg = pygame.image.load("drawable/bkgd_stage2.png")
+        self.bg = pygame.image.load("drawable/bkgd_final.jpg")
         self.bgWidth, self.bgHeight = self.bg.get_rect().size
 
         self.frame= pygame.image.load("drawable/frame.png")
 
-        self.greenMonsterHint = pygame.image.load("drawable/greenAlien.png")
-        self.greenLittleMonsterHint = pygame.image.load("drawable/greenLittleAlien.png")
-        self.skullHint = pygame.image.load("drawable/skull.png")
-
-        self.arrow = pygame.image.load("drawable/arrow.png")
-
         self.BLACK = (0, 0, 0, 255)
+        self.RED = (255, 0, 0, 255)
         self.WHITE = (255, 255, 255, 255)
 
         self.stageWidth = self.bgWidth * 2
         self.stagePosX = 0
 
-        self.iceBreak = pygame.image.load("drawable/iceBreak_forest.jpg")
+        self.iceBreak = pygame.image.load("drawable/iceBreak.jpg")
+        self.unknownOne = pygame.image.load("drawable/mistery.png")
 
         #텍스트
         self.fontObj = pygame.font.Font("drawable/seoul_hangang.ttf", 40)
-        self.textSurfaceObj = self.fontObj.render("☆ 한가지 팁 ☆ ", True, self.BLACK)
+        self.textSurfaceObj = self.fontObj.render("☆ 주의 ☆ ", True, self.RED)
         self.textRectObj = self.textSurfaceObj.get_rect()
         self.textRectObj.center = (465, 120)
 
         self.fontObj2 = pygame.font.Font("drawable/seoul_hangang.ttf", 23)
-        self.textSurfaceObj2 = self.fontObj2.render("초록 괴물은 두번 타격을 줘야한다고 합니다 !", True, self.BLACK)
+        self.textSurfaceObj2 = self.fontObj2.render("귀여운 모습에 속지 마세요 !!!", True, self.BLACK)
         self.textRectObj2 = self.textSurfaceObj2.get_rect()
-        self.textRectObj2.center = (460, 510)
-
+        self.textRectObj2.center = (450, 510)
         self.fontObj3 = pygame.font.Font("drawable/seoul_hangang.ttf", 50)
 
     def events(self):
@@ -71,11 +66,12 @@ class FirstToSecond :
             print(currentTime)
             currentTime = time.time() - startTime
             self.DS.blit(self.iceBreak,(0,0))
-            self.textSurfaceObj3 = self.fontObj3.render(("2 스테이지로 이동중 ... [ 숲 ]"),
+            self.DS.blit(self.iceBreak, (0, 0))
+            self.textSurfaceObj3 = self.fontObj3.render(("3 스테이지로 이동중 ... [ 지옥 ]"),
                                                         True,
                                                         self.WHITE)
             self.textRectObj3 = self.textSurfaceObj3.get_rect()
-            self.textRectObj3.center = (550, 500)
+            self.textRectObj3.center = (400, 550)
             self.DS.blit(self.textSurfaceObj3, self.textRectObj3)
             pygame.display.update()
 
@@ -92,11 +88,7 @@ class FirstToSecond :
                 self.DS.blit(self.bg, (self.rel_x, 20))
 
             self.DS.blit(self.frame,(190,55))
-            self.DS.blit(self.greenMonsterHint,(220, 250))
-            self.DS.blit(self.arrow, (340, 300))
-            self.DS.blit(self.greenLittleMonsterHint, (385, 250))
-            self.DS.blit(self.arrow, (525, 300))
-            self.DS.blit(self.skullHint, (570, 250))
+            self.DS.blit(self.unknownOne, (325, 180))
             self.DS.blit(self.textSurfaceObj2, self.textRectObj2)
             self.DS.blit(self.textSurfaceObj, self.textRectObj)
 
