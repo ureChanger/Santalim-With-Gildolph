@@ -40,11 +40,11 @@ class GameStart:
 
     # 누군가 선물을 다 가져간다고 한다 !
     def Take2(self):
-        font = pygame.font.SysFont("comicsansms", 40)
+        font = pygame.font.Font("drawable/seoul_hangang.ttf", 40)
         self.screen.fill((200, 200, 200))
         self.robbrr = pygame.image.load("drawable/robber.png")
         self.screen.blit(self.robbrr,(240, 250))
-        self.text = font.render(self.convItem.item[2], True, ((255, 0, 0)))
+        self.text = font.render(self.convItem.item[2], True, ((245, 130, 0)))
         self.screen.blit(self.text, (80, 370))
 
     # 도둑이다 !
@@ -67,17 +67,17 @@ class GameStart:
     def Take5(self):
         crysanta = pygame.image.load('drawable/crysanta.PNG')
         self.screen.blit(pygame.transform.scale(crysanta, (640, 480)), (0, 0))
-        font = pygame.font.SysFont("comicsansms", 28)
+        font = pygame.font.Font("drawable/seoul_hangang.ttf", 38)
         text2 = font.render(self.convItem.item[3], True, ((255, 255, 255)))
-        self.screen.blit(text2, (120, 330))
+        self.screen.blit(text2, (160, 350))
 
     # (유저네임)동글이가 간다
     def Take6(self):
-        font = pygame.font.SysFont("comicsansms", 30)
+        font = pygame.font.Font("drawable/seoul_hangang.ttf", 35)
         circleBack = pygame.image.load("drawable/donggeul.PNG")
         self.screen.blit(pygame.transform.scale(circleBack, (640, 480)), (0, 0))
         text3 = font.render(self.convItem.item[4], True, (0, 0, 0))
-        self.screen.blit(text3, (110, 40))
+        self.screen.blit(text3, (130, 50))
 
     def Take7(self):
         self.screen.fill((13, 132, 0))
@@ -100,7 +100,7 @@ class GameStart:
         self.screen.blit(self.snowjump, (20, 30))
         self.screen.blit(self.catch, (330, 30))
 
-    def Run(self):
+    def runThis(self):
         while self.run:
             pygame.display.update()
             pygame.display.set_caption("SNOW RUN")
@@ -142,8 +142,8 @@ class GameStart:
                         self.Take8()
                         print("button1 was clicked !")
                     elif self.button2.isOver(pos):
-                        self.mainGame.run()
                         print("button2 was clicked !")
+                        return 1
 
                 if event.type == pygame.MOUSEMOTION:
                     if self.button1.isOver(pos):
@@ -155,3 +155,7 @@ class GameStart:
                         self.button2.color = (250, 250, 0)
                     else:
                         self.button2.color = (172, 164, 255)
+
+if __name__ == '__main__':
+    rurun = GameStart()
+    rurun.runThis()
