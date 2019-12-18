@@ -118,7 +118,7 @@ class StageTwoSnowTheme:
             self.events()
             self.monster_touch_music = pygame.mixer.Sound("drawable/monster_touch.wav")
 
-            if self.score == 2 :
+            if self.score == 10 :
                 return 1
 
             #사용자 클릭 이벤트
@@ -157,7 +157,7 @@ class StageTwoSnowTheme:
                 self.DS.blit(self.bg_floor,(self.rel_x, 475))
 
             if self.stolen == False:
-                self.textSurfaceObj3 = self.fontObj3.render(("Monster to beat    " + str(self.score) + " / 20"), True, self.GOLD)
+                self.textSurfaceObj3 = self.fontObj3.render(("Monster to beat    " + str(self.score) + " / 10"), True, self.GOLD)
                 self.textRectObj3 = self.textSurfaceObj3.get_rect()
                 self.textRectObj3.center = (475, 50)
                 self.DS.blit(self.textSurfaceObj3, self.textRectObj3)
