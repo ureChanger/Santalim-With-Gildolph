@@ -45,8 +45,8 @@ class App(QWidget):
         self.startBtn.setText("Start")
         self.startBtn.setFont(QFont("궁서", 23))
         self.startBtn.move(770, 545)
-        # if self.startBtn.click():
-        #     self.startBtn.clicked().connect(self.startBtnClicked())
+        if self.startBtn.click():
+            self.startBtn.connect(self.startBtnClicked())
 
     def startBtnClicked(self):
         self.jumpToCov = GameStart()
@@ -56,6 +56,4 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = App()
     ex.show()
-    if ex.startBtn.click():
-        ex.startBtnClicked()
     sys.exit(app.exec_())

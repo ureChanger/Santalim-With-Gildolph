@@ -61,7 +61,7 @@ class endingScene:
                         self.takeCheck += 1
 
 
-
-if __name__ == '__main__':
-    end = endingScene()
-    end.endingRun()
+# 이 파일만 실행시키고 싶을 때
+# if __name__ == '__main__':
+#     end = endingScene()
+#     end.endingRun()
