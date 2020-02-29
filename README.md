@@ -11,8 +11,10 @@
 
 * 프로젝트 기간 : 2019. 11. 17 ~ 2019. 12. 13
 
+
 ## 프로젝트 설명
-'*Santalim-With-Gildolph*'
+'**Santalim-With-Gildolph**'입니다.
+> Pygame을 이용한 러닝 액션 게임
 
 ![SantalimWithGildolph(1)](https://user-images.githubusercontent.com/56578913/75602369-d5515f80-5b07-11ea-81cf-0993c7af9cbb.jpg)
 ![SantalimWithGildolph(2)](https://user-images.githubusercontent.com/56578913/75602373-dbdfd700-5b07-11ea-91fc-14f05bd05e8d.jpg)
