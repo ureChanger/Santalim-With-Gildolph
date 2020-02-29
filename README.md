@@ -18,7 +18,6 @@
 매년 12월, 새하얀 눈이 내리는 거리에 캐롤이 울려퍼지면 설레하며 크리스마스를 기다리는 우리의 모습을 볼 수 있습니다. 바쁜 일상은 잊고 잠시 어린 아이로 돌아가 귀여운 캐릭터들이 등장하는 게임과 함께 크리스마스를 기다려보는 것은 어떨까요?
 
 **크리스마스 선물을 되찾아라!** Pygame을 이용한 러닝 액션 게임 '**Santalim-With-Gildolph**'입니다. 
-> Pygame을 이용한 러닝 액션 게임
 
 ![SantalimWithGildolph(3)](https://user-images.githubusercontent.com/56578913/75602377-dedac780-5b07-11ea-9cc4-e698355ff4d9.jpg)
 ![SantalimWithGildolph(4)](https://user-images.githubusercontent.com/56578913/75602381-e1d5b800-5b07-11ea-9a30-6acb1930fc95.jpg)
