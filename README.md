@@ -15,7 +15,7 @@
 
 
 ## 프로젝트 설명
-'**Santalim-With-Gildolph**'입니다.
+매년 12월에 새하얀 눈이 내리는 거리에 캐롤이 울려퍼지면 말로만 들어도 어린 아이로 돌아가 설레하며 크리스마스를 기다리는 우리의 모습을 볼 수 있습니다.  '**Santalim-With-Gildolph**'입니다. 
 > Pygame을 이용한 러닝 액션 게임
 
 ![SantalimWithGildolph(1)](https://user-images.githubusercontent.com/56578913/75602369-d5515f80-5b07-11ea-81cf-0993c7af9cbb.jpg)
