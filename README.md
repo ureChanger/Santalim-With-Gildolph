@@ -8,6 +8,7 @@
 
 ![python_badge](https://img.shields.io/badge/python-3.7-blue?logo=Python)
 ![pygame_badge](https://img.shields.io/badge/pygame-1.9.6-green)
+![pyqt5_badge](https://img.shields.io/badge/pyqt5-5.13.0-green)
 ![code_size](https://img.shields.io/github/languages/code-size/ureChanger/Santalim-With-Gildolph)
 ![repo-size](https://img.shields.io/github/repo-size/ureChanger/Santalim-With-Gildolph)
 
