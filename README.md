@@ -52,7 +52,7 @@ import random
 |----------------|---------|----|--------|
 |InitialScreen   |:heavy_check_mark:|[NamSang-lim](https://github.com/sanglim00)|2|
 |Conversation    |:heavy_check_mark:|[NamSang-lim](https://github.com/sanglim00)|1|
-|Animation       |::heavy_minus_sign::|[NamSang-lim](https://github.com/sanglim00)|2|
+|Animation       |:heavy_minus_sign:|[NamSang-lim](https://github.com/sanglim00)|2|
 |ShiftToGame     |:heavy_check_mark:|[NamSang-lim](https://github.com/sanglim00)|1|
 |GameDescription |:heavy_check_mark:|[NamSang-lim](https://github.com/sanglim00)|1|
 |FirstGameStage  |:heavy_check_mark:|[ParkGil-hyeon](https://github.com/ureChanger)|1|
