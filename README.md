@@ -1,7 +1,7 @@
 # Santalim-With-Gildolph
 >
 > Kookmin University 2019 AD 프로젝트
->
+
 >![SantalimWithGildolph](https://user-images.githubusercontent.com/56578913/75602351-a2a76700-5b07-11ea-8db8-e3279b9be22f.jpg)
 
 ![python_badge](https://img.shields.io/badge/python-3.7-blue?logo=Python)
