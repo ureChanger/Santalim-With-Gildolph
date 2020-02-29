@@ -34,7 +34,7 @@
 ## dependency Library
 프로젝트에서 사용한 라이브러리들입니다.
 
-'''python
+''' python
 import pygame
 import pygame.locals
 import os
