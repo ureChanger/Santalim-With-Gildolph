@@ -6,6 +6,8 @@
 
 ![python_badge](https://img.shields.io/badge/python-3.7-blue?logo=Python)
 ![pygame_badge](https://img.shields.io/badge/pygame-1.9.6-green)
+![code_size](https://img.shields.io/github/languages/code-size/ureChanger/Santalim-With-Gildolph)
+![repo-size](https://img.shields.io/github/repo-size/ureChanger/Santalim-With-Gildolph)
 
 ![SantalimWithGildolph(1)](https://user-images.githubusercontent.com/56578913/75602369-d5515f80-5b07-11ea-81cf-0993c7af9cbb.jpg)
 ![SantalimWithGildolph(2)](https://user-images.githubusercontent.com/56578913/75602373-dbdfd700-5b07-11ea-91fc-14f05bd05e8d.jpg)
