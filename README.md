@@ -72,8 +72,6 @@ import random
 - 남상림
 > 생각보다 퀄리티가 있는 게임을 개발하는 것은 기획, 디자인에서부터 개발까지 모두 쉽지 않았다. 다음에는 평면이 아닌 공간적인 요소까지 고려하는 3D 게임을 개발해보고 싶다.
 
-![SantalimWithGildolph (5)](https://user-images.githubusercontent.com/56578913/75602382-e39f7b80-5b07-11ea-9d9a-c15fb7706f54.jpg)
-
 ## Project Member
 - [박길현](https://github.com/ureChanger)
 - [남상림](https://github.com/sanglim00)
