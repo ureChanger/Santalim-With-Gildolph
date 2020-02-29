@@ -1,4 +1,4 @@
-# :santa:  Santalim-With-Gildolph  :snowflake:
+# :santa:   Santalim-With-Gildolph   :snowflake:
 >
 > Kookmin University 2019 AD 프로젝트
 >
