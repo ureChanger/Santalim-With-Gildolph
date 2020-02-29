@@ -2,7 +2,7 @@
 >
 > Kookmin University 2019 AD 프로젝트
 >
-> Python을 주 사용 언어로 게임 제작에사용할 수 있는 pygame 라이브러리를 이용한 게임 프로
+> Python을 주 사용 언어로, 게임 제작에사용할 수 있는 pygame 라이브러리를 이용한 게임 제작 프로젝트
 >![SantalimWithGildolph](https://user-images.githubusercontent.com/56578913/75602351-a2a76700-5b07-11ea-8db8-e3279b9be22f.jpg)
 
 ![python_badge](https://img.shields.io/badge/python-3.7-blue?logo=Python)
