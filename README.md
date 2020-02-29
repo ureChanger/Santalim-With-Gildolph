@@ -47,6 +47,10 @@ import random
 
 ![SantalimWithGildolph(4)](https://user-images.githubusercontent.com/56578913/75602381-e1d5b800-5b07-11ea-9a30-6acb1930fc95.jpg)
 
+## Function Introdution
+|Function        |Implement|Part|Priority|
+|----------------|--------|------|---|
+
 ## Project Review
 ![SantalimWithGildolph (5)](https://user-images.githubusercontent.com/56578913/75602382-e39f7b80-5b07-11ea-9d9a-c15fb7706f54.jpg)
 
