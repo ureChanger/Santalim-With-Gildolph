@@ -25,10 +25,10 @@
 **A**dventure **D**esign의 약자로 국민대학교 소프트웨어학부 학생들이 강의 시간에 배운 것을 기반으로 자유롭게 하나의 프로젝트를 기획, 개발 과정을 거쳐 완성해나가는 것입니다. 학생의 주도로 진행되기 때문에 도전적이고 창의적인 주제와 기획들이 돋보입니다. 또한 새로운 분야에 도전하는만큼 배우지 않은 부분들도 스스로 찾아가며 큰 성장을 이뤄낼 수 있는 프로젝트입니다.
 
 ## Workflow
-> Ingame Stage
+>- Ingame Stage
 >![Modern Travel Plain Collage Facebook Post (1)](https://user-images.githubusercontent.com/56578913/75605336-2a4f9e80-5b25-11ea-88e2-d750de142c9a.png)
 
-> Code
+>- Code
 >![SantalimWithGildolph(3)](https://user-images.githubusercontent.com/56578913/75602377-dedac780-5b07-11ea-9cc4-e698355ff4d9.jpg)
 
 ## Library를 사용한 개발 방법
