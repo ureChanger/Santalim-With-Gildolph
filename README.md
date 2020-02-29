@@ -26,12 +26,16 @@
 
 ## Workflow
 ![SantalimWithGildolph(3)](https://user-images.githubusercontent.com/56578913/75602377-dedac780-5b07-11ea-9cc4-e698355ff4d9.jpg)
-<img src="https://user-images.githubusercontent.com/56578913/75604209-cbd0f300-5b19-11ea-8eb5-5c05fb891f05.png" width=400>
-<img src="https://user-images.githubusercontent.com/56578913/75604210-cecbe380-5b19-11ea-96a6-4c9a59e65f04.png" width=400>
-<img src="https://user-images.githubusercontent.com/56578913/75604212-d12e3d80-5b19-11ea-82fe-75f0d856c3ef.png" width=400>
-<img src="https://user-images.githubusercontent.com/56578913/75604214-d3909780-5b19-11ea-9ab4-1413975341b2.png" width=400>
-<img src="" width=400>
-<img src="" width=400>
+<img src="https://user-images.githubusercontent.com/56578913/75604209-cbd0f300-5b19-11ea-8eb5-5c05fb891f05.png" width=420>
+<img src="https://user-images.githubusercontent.com/56578913/75604210-cecbe380-5b19-11ea-96a6-4c9a59e65f04.png" width=420>
+<img src="https://user-images.githubusercontent.com/56578913/75604212-d12e3d80-5b19-11ea-82fe-75f0d856c3ef.png" width=420>
+<img src="https://user-images.githubusercontent.com/56578913/75604214-d3909780-5b19-11ea-9ab4-1413975341b2.png" width=420>
+<img src="https://user-images.githubusercontent.com/56578913/75604215-d5f2f180-5b19-11ea-9323-8a65b4a6db78.png" width=400>
+<img src="https://user-images.githubusercontent.com/56578913/75604216-d8ede200-5b19-11ea-8965-e07ce7244191.png" width=400>
+<img src="https://user-images.githubusercontent.com/56578913/75604219-dd19ff80-5b19-11ea-8fea-f89ad8c96b32.png" width=400>
+<img src="https://user-images.githubusercontent.com/56578913/75604221-e014f000-5b19-11ea-8cef-740feeb90f45.png" width=400>
+<img src="https://user-images.githubusercontent.com/56578913/75604222-e2774a00-5b19-11ea-9b44-9fde0a443ea1.png" width=400>
+<img src="https://user-images.githubusercontent.com/56578913/75604224-e4410d80-5b19-11ea-97ee-99fb3a1094df.png" width=400>
 
 ![스크린샷, ad_project_nwg mp4 - 7](https://user-images.githubusercontent.com/56578913/75604209-cbd0f300-5b19-11ea-8eb5-5c05fb891f05.png)
 ![스크린샷, ad_project_nwg mp4 - 8](https://user-images.githubusercontent.com/56578913/75604210-cecbe380-5b19-11ea-96a6-4c9a59e65f04.png)
@@ -41,6 +45,7 @@
 ![스크린샷, ad_project_nwg mp4 - 4](https://user-images.githubusercontent.com/56578913/75604216-d8ede200-5b19-11ea-8965-e07ce7244191.png)
 ![스크린샷, ad_project_nwg mp4 - 3](https://user-images.githubusercontent.com/56578913/75604219-dd19ff80-5b19-11ea-8fea-f89ad8c96b32.png)
 ![스크린샷, ad_project_nwg mp4 - 2](https://user-images.githubusercontent.com/56578913/75604221-e014f000-5b19-11ea-8cef-740feeb90f45.png)
+
 ![스크린샷, ad_project_nwg mp4](https://user-images.githubusercontent.com/56578913/75604222-e2774a00-5b19-11ea-9b44-9fde0a443ea1.png)
 ![스크린샷, ad_project_nwg mp4 - 1](https://user-images.githubusercontent.com/56578913/75604224-e4410d80-5b19-11ea-97ee-99fb3a1094df.png)
 
