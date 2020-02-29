@@ -30,5 +30,5 @@
 ![SantalimWithGildolph (5)](https://user-images.githubusercontent.com/56578913/75602382-e39f7b80-5b07-11ea-9d9a-c15fb7706f54.jpg)
 
 ## Project Member
-[박길현](https://github.com/ureChanger)
-[남상림](https://github.com/sanglim00)
+- [박길현](https://github.com/ureChanger)
+- [남상림](https://github.com/sanglim00)
