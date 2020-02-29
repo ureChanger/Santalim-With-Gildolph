@@ -25,20 +25,8 @@
 **A**dventure **D**esign의 약자로 국민대학교 소프트웨어학부 학생들이 강의 시간에 배운 것을 기반으로 자유롭게 하나의 프로젝트를 기획, 개발 과정을 거쳐 완성해나가는 것입니다. 학생의 주도로 진행되기 때문에 도전적이고 창의적인 주제와 기획들이 돋보입니다. 또한 새로운 분야에 도전하는만큼 배우지 않은 부분들도 스스로 찾아가며 큰 성장을 이뤄낼 수 있는 프로젝트입니다.
 
 ## Workflow
-![SantalimWithGildolph(3)](https://user-images.githubusercontent.com/56578913/75602377-dedac780-5b07-11ea-9cc4-e698355ff4d9.jpg)
 ![Modern Travel Plain Collage Facebook Post (1)](https://user-images.githubusercontent.com/56578913/75605336-2a4f9e80-5b25-11ea-88e2-d750de142c9a.png)
-
-
-<img src="https://user-images.githubusercontent.com/56578913/75604209-cbd0f300-5b19-11ea-8eb5-5c05fb891f05.png" width=420>
-<img src="https://user-images.githubusercontent.com/56578913/75604210-cecbe380-5b19-11ea-96a6-4c9a59e65f04.png" width=420>
-<img src="https://user-images.githubusercontent.com/56578913/75604212-d12e3d80-5b19-11ea-82fe-75f0d856c3ef.png" width=420>
-<img src="https://user-images.githubusercontent.com/56578913/75604214-d3909780-5b19-11ea-9ab4-1413975341b2.png" width=420>
-<img src="https://user-images.githubusercontent.com/56578913/75604215-d5f2f180-5b19-11ea-9323-8a65b4a6db78.png" width=400>
-<img src="https://user-images.githubusercontent.com/56578913/75604216-d8ede200-5b19-11ea-8965-e07ce7244191.png" width=400>
-<img src="https://user-images.githubusercontent.com/56578913/75604219-dd19ff80-5b19-11ea-8fea-f89ad8c96b32.png" width=400>
-<img src="https://user-images.githubusercontent.com/56578913/75604221-e014f000-5b19-11ea-8cef-740feeb90f45.png" width=400>
-<img src="https://user-images.githubusercontent.com/56578913/75604222-e2774a00-5b19-11ea-9b44-9fde0a443ea1.png" width=400>
-<img src="https://user-images.githubusercontent.com/56578913/75604224-e4410d80-5b19-11ea-97ee-99fb3a1094df.png" width=400>
+![SantalimWithGildolph(3)](https://user-images.githubusercontent.com/56578913/75602377-dedac780-5b07-11ea-9cc4-e698355ff4d9.jpg)
 
 ![스크린샷, ad_project_nwg mp4 - 7](https://user-images.githubusercontent.com/56578913/75604209-cbd0f300-5b19-11ea-8eb5-5c05fb891f05.png)
 ![스크린샷, ad_project_nwg mp4 - 8](https://user-images.githubusercontent.com/56578913/75604210-cecbe380-5b19-11ea-96a6-4c9a59e65f04.png)
