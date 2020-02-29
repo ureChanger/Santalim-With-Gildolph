@@ -31,8 +31,8 @@
 >### Code
 >![SantalimWithGildolph(3)](https://user-images.githubusercontent.com/56578913/75602377-dedac780-5b07-11ea-9cc4-e698355ff4d9.jpg)
 
-## dependency Library
-프로젝트에서 사용한 라이브러리들입니다.
+## Dependency Library
+프로젝트에서 사용한 라이브러리들은 다음과 같습니다.
 
 ```python
 import pygame
