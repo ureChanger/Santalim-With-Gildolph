@@ -65,7 +65,13 @@ import random
 |GameStoryPlan   |:heavy_check_mark:|[NamSang-lim](https://github.com/sanglim00)|1|
 |GameEnding      |:heavy_check_mark:|[NamSang-lim](https://github.com/sanglim00)|1|
 
-## Project Review
+## Contributor Review
+- 박길현
+> 게임 속 여러 이벤트들이 추가되며 코드가 난잡해졌다. 패키지, 메소드와 클래스를 최대한 이용하지 못한 것이 아쉽다. 객관성을 유지 못한 코드는 처음부터 다시 작성해야하는 경우도 빈번했다. 다음에는 이번 시행착오를 경험삼아 보다 깔끔하고 아름다운 코드로 프로젝트를 완성시키고 싶다.
+
+- 남상림
+> 생각보다 퀄리티가 있는 게임을 개발하는 것은 기획, 디자인에서부터 개발까지 모두 쉽지 않았다. 다음에는 평면이 아닌 공간적인 요소까지 고려하는 3D 게임을 개발해보고 싶다.
+
 ![SantalimWithGildolph (5)](https://user-images.githubusercontent.com/56578913/75602382-e39f7b80-5b07-11ea-9d9a-c15fb7706f54.jpg)
 
 ## Project Member
