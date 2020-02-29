@@ -49,7 +49,21 @@ import random
 
 ## Function Introdution
 |Function        |Implement|Part|Priority|
-|----------------|--------|------|---|
+|----------------|---------|----|--------|
+|InitialScreen   |:heavy_check_mark:|[남상림](https://github.com/sanglim00)|2|
+|Conversation    |:heavy_check_mark:|[남상림](https://github.com/sanglim00)|1|
+|Animation       |:heavy_multiplication_x:|[남상림](https://github.com/sanglim00)|2|
+|ShiftToGame     |:heavy_check_mark:|[남상림](https://github.com/sanglim00)|1|
+|GameDescription |:heavy_check_mark:|[남상림](https://github.com/sanglim00)|1|
+|FirstGameStage  |:heavy_check_mark:|[박길현](https://github.com/ureChanger)|1|
+|SecondGameStage |:heavy_check_mark:|[박길현](https://github.com/ureChanger)|1|
+|ThirdGameStage  |:heavy_check_mark:|[박길현](https://github.com/ureChanger)|1|
+|PlayerPhysicsEngine|:heavy_check_mark:|[박길현](https://github.com/ureChanger)|1|
+|MonsterPhysicsEngine|:heavy_check_mark:|[박길현](https://github.com/ureChanger)|1|
+|GameRunner      |:heavy_check_mark:|[박길현](https://github.com/ureChanger)|1|
+|GameMovingWindow|:heavy_check_mark:|[박길현](https://github.com/ureChanger)|2|
+|GameStoryPlan   |:heavy_check_mark:|[남상림](https://github.com/sanglim00)|1|
+|GameEnding      |:heavy_check_mark:|[남상림](https://github.com/sanglim00)|1|
 
 ## Project Review
 ![SantalimWithGildolph (5)](https://user-images.githubusercontent.com/56578913/75602382-e39f7b80-5b07-11ea-9d9a-c15fb7706f54.jpg)
