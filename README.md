@@ -1,6 +1,6 @@
 # :santa: Santalim-With-Gildolph :snowflake:
->>
->> Kookmin University 2019 AD 프로젝트
+>
+> Kookmin University 2019 AD 프로젝트
 >
 > Python과 pygame을 이용한 게임 제작 프로젝트
 >
