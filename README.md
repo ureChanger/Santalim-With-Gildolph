@@ -34,14 +34,14 @@
 ## dependency Library
 프로젝트에서 사용한 라이브러리들입니다.
 
-''' python
+```python
 import pygame
 import pygame.locals
 import os
 import sys
 import time
 import random
-'''
+```
 
 ![SantalimWithGildolph(4)](https://user-images.githubusercontent.com/56578913/75602381-e1d5b800-5b07-11ea-9a30-6acb1930fc95.jpg)
 
