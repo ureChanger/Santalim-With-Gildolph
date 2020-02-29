@@ -26,8 +26,7 @@
 
 ## Workflow
 >### InGame Stage
-![Modern Travel Plain Collage Facebook Post (2)](https://user-images.githubusercontent.com/56578913/75606497-c7640480-5b30-11ea-933d-5d50a7f37976.png)
-
+![Modern Travel Plain Collage Facebook Post (3)](https://user-images.githubusercontent.com/56578913/75606526-03976500-5b31-11ea-9f9a-af0e19025a29.png)
 
 >### Code
 >![SantalimWithGildolph(3)](https://user-images.githubusercontent.com/56578913/75602377-dedac780-5b07-11ea-9cc4-e698355ff4d9.jpg)
