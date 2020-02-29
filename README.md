@@ -37,6 +37,8 @@
 ```python
 import pygame
 import pygame.locals
+import PyQt5.QtGui
+import PyQt5.QtWidgets
 import os
 import sys
 import time
