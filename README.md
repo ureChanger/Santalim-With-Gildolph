@@ -6,6 +6,8 @@
 >
 >![SantalimWithGildolph](https://user-images.githubusercontent.com/56578913/75602351-a2a76700-5b07-11ea-8db8-e3279b9be22f.jpg)
 >[![Ingame_Video](https://user-images.githubusercontent.com/56578913/75603824-a80bae00-5b15-11ea-9add-8ca78bcdfee1.png)](https://youtu.be/rnt4gK24cG4)
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/56578913/75603982-709e0100-5b17-11ea-8487-5cf20ac90cfb.gif)
+
 
 ![python_badge](https://img.shields.io/badge/python-3.7-blue?logo=Python)
 ![pygame_badge](https://img.shields.io/badge/pygame-1.9.6-green)
