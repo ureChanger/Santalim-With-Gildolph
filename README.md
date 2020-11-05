@@ -74,4 +74,4 @@ import random
 
 ## Project Member
 - [박길현](https://github.com/ureChanger)
-- [남상림](https://github.com/NamSanglim)
+- [남상림](https://github.com/sanglim00)
